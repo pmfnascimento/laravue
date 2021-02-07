@@ -2,4 +2,5 @@
 
 #### 1 - Instalação de Laravel e Vue 
 #### 2 - Os Componentes 
-#### 3 - Configuração da Vue Router 
+#### 3 - Configuração das Vue Router
+#### 4 - Fetch dados com Axios

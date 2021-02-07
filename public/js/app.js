@@ -1941,8 +1941,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      tasks: {}
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get("http://laravue.test/tasksList").then(function (response) {
+      return _this.tasks = response.data;
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+  },
   mounted: function mounted() {
     console.log("Component mounted.");
   }
@@ -37587,34 +37600,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("ul", { staticClass: "group-list" }, [
-        _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { attrs: { href: "" } }, [_vm._v("Task 1")])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { attrs: { href: "" } }, [_vm._v("Task 2")])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { attrs: { href: "" } }, [_vm._v("Task 3")])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { attrs: { href: "" } }, [_vm._v("Task 4")])
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "ul",
+      { staticClass: "group-list" },
+      _vm._l(_vm.tasks, function(task) {
+        return _c("li", { key: task.id, staticClass: "list-group-item" }, [
+          _c("a", { attrs: { href: "#" } }, [_vm._v(_vm._s(task.name))])
         ])
-      ])
-    ])
-  }
-]
+      }),
+      0
+    )
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
