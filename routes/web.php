@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 Route::get('/tasksList', [TasksController::class, 'index']);
 Route::post('/tasksList', [TasksController::class, 'store']);
+Route::get('/tasks/edit/{id}', [TasksController::class, 'edit']);

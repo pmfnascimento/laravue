@@ -1,17 +1,12 @@
 <template>
     <div>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Add Task
-        </button>
-
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Criar Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Modal title</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -20,7 +15,8 @@
                         <form>
                             <div class="form-group">
                                 <label for="name">Nome da task</label>
-                                <textarea name="name" class="form-control" id="name" rows="4" v-model="name"></textarea>
+                                <textarea name="name" class="form-control" id="name" rows="4"
+                                    v-model="taskToEdit"></textarea>
                             </div>
                         </form>
                     </div>
@@ -28,8 +24,8 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">
                             Close
                         </button>
-                        <button type="submit" class="btn btn-success" @click="storeTask">
-                            Criar a Task
+                        <button type="submit" class="btn btn-success">
+                            Editar a Task
                         </button>
                     </div>
                 </div>
@@ -40,20 +36,6 @@
 
 <script>
     export default {
-        data() {
-            return {
-                name: ""
-            }
-        },
-
-        methods: {
-            storeTask() {
-                axios.post('http://laravue.test/tasksList', {
-                    name: this.name
-                })
-                    .then(response => this.$emit('task-added', response))
-                    .catch(error => console.log(error))
-            },
-        },
-    };
+        props: ['taskToEdit'],
+    }
 </script>

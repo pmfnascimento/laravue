@@ -4,13 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <title>Gestor de Tarefas</title>
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
+<script src="http://localhost:35729/livereload.js"></script>
 <body>
     <div id="app">
+ 
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -25,7 +27,6 @@
                     </li>
                     <li class="nav-item">
                         <router-link class="nav-link" to="/tasks">Lista de Taks</router-link>
-                    </li>
                 </ul>
             </div>
         </nav>
@@ -33,7 +34,7 @@
             <router-view></router-view>
         </div>
     </div>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 
 </html>
