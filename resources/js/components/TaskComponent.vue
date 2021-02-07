@@ -1,12 +1,14 @@
 <template>
   <div class="container">
+
     <ul class="group-list">
+          <add-task class="mb-3" @task-added="refresh"></add-task>
       <li class="list-group-item" v-for="task in tasks.data" :key="task.id">
         <a href="#">{{ task.name }}</a>
       </li>
-     
+          <pagination :data="tasks" @pagination-change-page="getResults" class="mt-5"></pagination>
     </ul>
-     <pagination :data="tasks" @pagination-change-page="getResults" class="mt-5"></pagination>
+
   </div>
 </template>
 
@@ -32,7 +34,10 @@ export default {
 				.then(response => {
 					this.tasks = response.data;
 				});
-		}
+		},
+    refresh(tasks){
+      this.tasks = tasks.data;
+    }
 	}
 };
 </script>

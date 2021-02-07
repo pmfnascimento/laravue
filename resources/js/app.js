@@ -12,6 +12,7 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.component('add-task', require('./components/AddTaskComponent.vue').default);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -25,7 +26,6 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 
 import Home from './components/HomeComponent.vue';
 import Task from './components/TaskComponent.vue';
-
 const routes = [
     {
         path: '/',
