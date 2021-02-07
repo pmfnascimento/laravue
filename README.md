@@ -1,3 +1,4 @@
-## About Laravue
+## Aplicação Web Laravel com Vue
 
-### Aplicação Laravel com Vue
+### 1 - Instalação de Laravel e Vue 
+
