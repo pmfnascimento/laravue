@@ -4,3 +4,4 @@
 #### 2 - Os Componentes 
 #### 3 - Configuração das Vue Router
 #### 4 - Fetch dados com Axios
+#### 4 - Paginação
