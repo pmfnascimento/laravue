@@ -1,7 +1,12 @@
 <template>
     <div class="container">
+
         <ul class="group-list">
+            
             <add-task class="mb-3" @task-added="refresh"></add-task>
+            <div class="list-group-item">
+                <input type="text" class="form-control" @keyup="searchTask" v-model="q" placeholder="Pesquise por uma task">
+            </div>
             <li class="list-group-item d-flex justify-content-between align-items-center" v-for="task in tasks.data"
                 :key="task.id">
                 <a href="#">{{ task.name }}</a>
@@ -25,7 +30,8 @@
         data() {
             return {
                 tasks: {},
-                taskToEdit: ''
+                taskToEdit: '',
+                q: '',
             };
         },
         created() {
@@ -59,6 +65,18 @@
             refresh(tasks) {
                 this.tasks = tasks.data;
             },
+            searchTask(){
+                if (this.q.length > 3) {
+                    axios.get("http://laravue.test/tasksList/" + this.q)
+                    .then(response => this.tasks = response.data)
+                    .catch(error => console.log(error));
+                }else{
+                    axios
+                .get("http://laravue.test/tasksList")
+                .then((response) => this.tasks = response.data)
+                .catch(error => console.log(error));
+                }
+            }
         },
     };
 

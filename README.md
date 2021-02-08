@@ -9,3 +9,4 @@
 #### 7 - Editar dados com Axios
 #### 7.1 - Continuação de Editar dados com Axios
 #### 8 - Excluir dados com Axios
+#### 9 - Pesquisa Dinâmica
