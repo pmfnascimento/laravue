@@ -5,9 +5,14 @@
             <li class="list-group-item d-flex justify-content-between align-items-center" v-for="task in tasks.data"
                 :key="task.id">
                 <a href="#">{{ task.name }}</a>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" @click=getTask(task.id)>
+               <div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" @click="getTask(task.id)">
                     Editar
                 </button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" @click="deleteTask(task.id)">
+                    Eliminar
+                </button>
+               </div>
             </li>
             <edit-task v-bind:taskToEdit="taskToEdit" @task-updated="refresh"></edit-task>
             <pagination :data="tasks" @pagination-change-page="getResults" class="mt-5"></pagination>
@@ -44,6 +49,11 @@
             getTask(id){
               axios.get("http://laravue.test/tasks/edit/" + id)
                     .then(response => this.taskToEdit = response.data)
+                    .catch(error => console.log(error));
+            },
+            deleteTask(id){
+              axios.delete("http://laravue.test/tasks/" + id)
+                    .then(response => this.tasks = response.data)
                     .catch(error => console.log(error));
             },
             refresh(tasks) {
