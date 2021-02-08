@@ -28,7 +28,7 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">
                             Close
                         </button>
-                        <button type="submit" class="btn btn-success" @click="storeTask">
+                        <button type="submit" class="btn btn-success" @click="storeTask" data-dismiss="modal">
                             Criar a Task
                         </button>
                     </div>

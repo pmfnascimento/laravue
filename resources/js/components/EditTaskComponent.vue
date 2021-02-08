@@ -13,10 +13,11 @@
                     </div>
                     <div class="modal-body">
                         <form>
+
                             <div class="form-group">
                                 <label for="name">Nome da task</label>
                                 <textarea name="name" class="form-control" id="name" rows="4"
-                                    v-model="taskToEdit"></textarea>
+                                    v-model="taskToEdit.name"></textarea>
                             </div>
                         </form>
                     </div>
@@ -24,7 +25,7 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">
                             Close
                         </button>
-                        <button type="submit" class="btn btn-success">
+                        <button type="submit" class="btn btn-success" @click="update" data-dismiss="modal">
                             Editar a Task
                         </button>
                     </div>
@@ -36,6 +37,19 @@
 
 <script>
     export default {
+
         props: ['taskToEdit'],
-    }
+
+        methods: {
+            update() {
+                axios.patch('https://laravue.test/tasks/edit/' + this.taskToEdit.id, {
+                    name: this.taskToEdit.name,
+                })
+                    .then(response => this.$emit('task-updated', response))
+                    .catch(error => console.log(error));
+
+            }
+                                                                        }
+                                                                    }
+
 </script>
